@@ -1,0 +1,45 @@
+﻿@model StatusViewModel
+@{
+    ViewData["Title"] = "Status";
+}
+
+
+<section>
+    <div class="db">
+        <div class="db-l" style="opacity:0;">
+            <div class="db-l-1">
+
+            </div>
+        </div>
+        <div class="db-2">
+            <div class="db-2-com db-2-main">
+                <h4>Status</h4>
+                <div class="db-2-main-com db-2-main-com-table db-com-p" style="padding: unset !important;">
+                    <form class="contact__form v2-search-form" asp-controller="Pages" asp-action="Status">
+                        <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                            Thank you message
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input asp-for="transref" type="text" class="validate" required>
+                                <label asp-for="transref">Ref Number</label>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                                <div class="input-field col s6">
+                                    <button type="submit" value="Submit" class="waves-effect waves-light tourz-sear-btn v2-ser-btn" style="width:100%; border: none;">Check Status</button>
+                                </div>
+                        </div>
+                        <br />
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="db-l" style="opacity:0;">
+            <div class="db-l-1">
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -37,6 +37,7 @@ namespace EasyTravel
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,18 +51,20 @@ namespace EasyTravel
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Pages/Error");
             }
 
             app.UseStaticFiles();
 
             app.UseAuthentication();
 
+            app.UseSession();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Pages}/{action=Index}/{id?}");
             });
         }
     }

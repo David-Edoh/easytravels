@@ -4,9 +4,85 @@
     ViewData.AddActivePage(ManageNavPages.Index);
 }
 
-<h4>@ViewData["Title"]</h4>
-@Html.Partial("_StatusMessage", Model.StatusMessage)
-<div class="row">
+<section>
+    <div class="db">
+        @Html.Partial("_StatusMessage", Model.StatusMessage)
+        <div class="db-l">
+            <div class="db-l-1">
+                <ul>
+                    <li>
+                        <img src="~/images/db-profile.jpg" alt="" />
+                    </li>
+                    <li>Welcome @Model.FirstName @Model.LastName</li>
+                </ul>
+            </div>
+            <div class="db-l-2">
+                <ul>
+                    <li>
+                        <a asp-controller="Manage" asp-action="index"><img src="~/images/icon/dbl6.png" alt="" /> My Profile</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="~/images/icon/dbl1.png" alt="" /> All Bookings</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="~/images/icon/dbl2.png" alt="" /> Gift Cards</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="db-2">
+            <div class="db-2-com db-2-main">
+                <h4>My Profile</h4>
+                <div class="db-2-main-com db-2-main-com-table">
+                    <table class="responsive-table">
+                        <tbody>
+                            <tr>
+                                <td>Full Name</td>
+                                <td>:</td>
+                                <td>@Model.FirstName @Model.LastName</td>
+                            </tr>
+
+                            <tr>
+                                <td>Email</td>
+                                <td>:</td>
+                                <td>@Model.Email</td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>:</td>
+                                <td>@Model.PhoneNumber</td>
+                            </tr>
+
+                            <tr>
+                                <td>Address</td>
+                                <td>:</td>
+                                <td>@Model.Address</td>
+                            </tr>
+                            <tr>
+                                <td>Total earned points</td>
+                                <td>:</td>
+                                <td>
+                                    <span class="db-done">50</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="db-mak-pay-bot">
+                        <a asp-controller="Manage" asp-action="Edit" class="waves-effect waves-light btn-large">Edit my Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="db-l" style="opacity:0;">
+            <div class="db-l-1">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@*<div class="row">
     <div class="col-md-6">
         <form method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
@@ -38,7 +114,7 @@
             <button type="submit" class="btn btn-default">Save</button>
         </form>
     </div>
-</div>
+</div>*@
 
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")

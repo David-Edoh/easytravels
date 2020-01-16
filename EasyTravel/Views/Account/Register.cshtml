@@ -3,33 +3,102 @@
     ViewData["Title"] = "Register";
 }
 
-<h2>@ViewData["Title"]</h2>
+<!--DASHBOARD-->
+<section>
+    <div class="tr-register">
+        <div class="tr-regi-form">
+            <h4>Create an Account</h4>
+            <form class="col s12" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
-            <h4>Create a new account.</h4>
-            <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmPassword"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-default">Register</button>
-        </form>
+                <div class="row">
+                    <div class="input-field col m6 s12">
+                        <input asp-for="FirstName" type="text" class="validate">
+                        <label asp-for="FirstName">First Name</label>
+                    </div>
+                    <div class="input-field col m6 s12">
+                        <input asp-for="LastName" type="text" class="validate">
+                        <label asp-for="LastName">Last Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input asp-for="PhoneNumber" type="number" class="validate">
+                        <label asp-for="PhoneNumber">Mobile</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input asp-for="Email" type="email" class="validate">
+                        <label asp-for="Email">Email</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input asp-for="Address" type="text" class="validate">
+                        <label asp-for="Address">Address</label>
+                    </div>
+                    
+                </div>
+               
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input asp-for="Password" type="password" class="validate">
+                        <label asp-for="Password">Password</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input asp-for="ConfirmPassword" type="password" class="validate">
+                        <label asp-for="ConfirmPassword">Confirm Password</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="checkbox">
+                        <label style="color: black !important; font-size: 12px !important;"><input style="position: inherit !important; opacity: 1 !important;" type="checkbox" value="">Send me mails with bonus offers and other informations.</label>
+                    </div>
+                    <div class="checkbox">
+                        <label style="color: black !important; font-size: 12px !important;"><input style="position: inherit !important; opacity: 1 !important;" type="checkbox" value="">I have read through and agreed the terms of use.</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="submit" value="Create Account" class="waves-effect waves-light btn-large full-btn">
+                    </div>
+
+                </div>
+            </form>
+            <p>
+                Are you a already member ? <a asp-controller="Account" asp-action="Login">Click to Login</a>
+            </p>
+        </div>
     </div>
-</div>
+</section>
+@*<div class="row">
+        <div class="col-md-4">
+            <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                <h4>Create a new account.</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword"></label>
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-default">Register</button>
+            </form>
+        </div>
+    </div>*@
 
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")

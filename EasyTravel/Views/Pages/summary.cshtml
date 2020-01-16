@@ -1,0 +1,81 @@
+﻿@model SuccessViewModel
+@{
+    ViewData["Title"] = "summary";
+}
+<section>
+    <div class="db">
+        <div class="db-l">
+            <div class="db-l-1">
+
+            </div>
+        </div>
+        <div class="db-2">
+            <div class="db-2-com db-2-main">
+                <h4>Booking Summary</h4>
+                <div class="db-2-main-com db-2-main-com-table">
+                    <table class="responsive-table">
+                        <tbody>
+                            <tr>
+                                <td>Name</td>
+                                <td>:</td>
+                                <td>@Model.First_Name @Model.Last_Name</td>
+                            </tr>
+                            <tr>
+                                <td>Phone Number</td>
+                                <td>:</td>
+                                <td>@Model.PhoneNumber</td>
+                            </tr>
+                            <tr>
+                                <td>Traveling from</td>
+                                <td>:</td>
+                                <td>@Model.From</td>
+                            </tr>
+                            <tr>
+                                <td>Traveling to</td>
+                                <td>:</td>
+                                <td>@Model.To</td>
+                            </tr>
+                            <tr>
+                                <td>Motor Park</td>
+                                <td>:</td>
+                                <td>@Model.Motor_park</td>
+                            </tr>
+                            <tr>
+                                <td>Prefered Vehicle</td>
+                                <td>:</td>
+                                <td>@Model.Vehicle</td>
+                            </tr>
+                            <tr>
+                                <td>Seat Number</td>
+                                <td>:</td>
+                                <td>@Model.Prefered_Seat</td>
+                            </tr>
+                            <tr>
+                                <td>Trip date</td>
+                                <td>:</td>
+                                <td>
+                                    @Model.Travel_Date
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Trip Time</td>
+                                <td>:</td>
+                                <td>
+                                    @Model.Depature_Time
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="db-mak-pay-bot">
+                        <a onclick="payWithPaystack()" class="waves-effect waves-light btn-large">Make Payment Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="db-l">
+            <div class="db-l-1">
+
+            </div>
+        </div>
+    </div>
+</section>

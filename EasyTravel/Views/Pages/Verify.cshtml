@@ -1,0 +1,69 @@
+﻿@model VerifyViewModel
+@{
+    ViewData["Title"] = "Success";
+}
+
+<section>
+    <div class="db">
+        <div class="db-l" style="opacity:0;">
+            <div class="db-l-1">
+
+            </div>
+        </div>
+        <div class="db-2">
+            <div class="db-2-com db-2-main">
+                <h4>Ticket</h4>
+                <div class="db-2-main-com db-2-main-com-table db-com-p">
+                    <h5>Payment Successful</h5>
+                    <p>Dear, @Model.First_Name @Model.Last_Name, your booking was successful and your confirmation code is @Model.Payment_Ref. Kindly keep this code safe and take it to the park on the day you're traveling to show for confirmation...</p>
+
+                    <div class="cardWrap">
+                        <div class="card cardLeft ticket-left">
+                            <h1>Ticket</h1>
+                            <div class="title">
+                                <h2>Landstar Express</h2>
+                                <span>Park</span>
+                            </div>
+                            <div class="name">
+                                <h2>@Model.First_Name @Model.Last_Name</h2>
+                                <span>name</span>
+                            </div>
+                            <div class="seat">
+                                <h2>@Model.Prefered_Seat</h2>
+                                <span>seat</span>
+                            </div>
+                            <div class="time">
+                                <h2>@Model.Travel_Date</h2>
+                                <span>date</span>
+                            </div>
+                            <div class="time">
+                                <h2>@Model.Depature_Time</h2>
+                                <span>time</span>
+                            </div>
+
+                        </div>
+                        <div class="card cardRight ticket-right" style="">
+                            @* <div class="eye"></div>*@
+                            <div class="number">
+                                <h3>@Model.Prefered_Seat</h3>
+                                <span style="text-align: center;">seat</span>
+                            </div>
+                            <div class="barcode"></div>
+                            <p style="text-align:center;">Ref:@Model.Payment_Ref</p>
+                        </div>
+
+                    </div>
+                    @*<div class="db-mak-pay-bot">
+                        <a class="waves-effect waves-light btn-large">Print</a>
+                    </div>*@
+                </div>
+               
+            </div>
+        </div>
+        <div class="db-l" style="opacity:0;">
+            <div class="db-l-1">
+
+            </div>
+        </div>
+    </div>
+</section>

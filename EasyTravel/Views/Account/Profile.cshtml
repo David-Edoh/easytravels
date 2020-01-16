@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<section>
+    <div class="db">
+        <div class="db-l">
+            <div class="db-l-1">
+                <ul>
+                    <li>
+                        <img src="~/images/db-profile.jpg" alt="" />
+                    </li>
+                    <li>Full Name here</li>
+                </ul>
+            </div>
+            <div class="db-l-2">
+					<ul>
+                        <li>
+							<a asp-action="Profile"><img src="~/images/icon/dbl6.png" alt="" /> My Profile</a>
+						</li>
+						<li>
+							<a href="#"><img src="~/images/icon/dbl1.png" alt="" /> All Bookings</a>
+						</li>
+						<li>
+							<a href="#"><img src="~/images/icon/dbl2.png" alt="" /> Gift Cards</a>
+						</li>
+					</ul>
+				</div>
+
+        </div>
+        <div class="db-2">
+            <div class="db-2-com db-2-main">
+                <h4>My Profile</h4>
+                <div class="db-2-main-com db-2-main-com-table">
+                    <table class="responsive-table">
+                        <tbody>
+                            <tr>
+                                <td>Full Name</td>
+                                <td>:</td>
+                                <td>Sam Anderson</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Email</td>
+                                <td>:</td>
+                                <td>user@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>:</td>
+                                <td>090...</td>
+                            </tr>
+                            <tr>
+                                <td>Date of birth</td>
+                                <td>:</td>
+                                <td>03 Jun 1990</td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td>:</td>
+                                <td>8800 Orchard Lake Road, Suite 180 Farmington Hills, U.S.A.</td>
+                            </tr>
+                            <tr>
+                                <td>Total earned points</td>
+                                <td>:</td>
+                                <td>
+                                    <span class="db-done">50</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="db-mak-pay-bot">
+                        <a asp-action="Editprofile" class="waves-effect waves-light btn-large">Edit my Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="db-l" style="opacity:0;">
+            <div class="db-l-1">
+
+            </div>
+        </div>
+    </div>
+</section>

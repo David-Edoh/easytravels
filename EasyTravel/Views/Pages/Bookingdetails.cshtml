@@ -1,0 +1,86 @@
+﻿@model BookingDetailsViewModel;
+@{
+    ViewData["Title"] = "Booking details";
+}
+
+<section>
+<div class="v2-hom-search">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="v2-ho-se-ri">
+                    <h5>Vehicle seat map</h5>
+                    
+                    <img src="" alt="seat map" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="">
+                    <form class="contact__form v2-search-form form-padding" asp-controller="Pages" asp-action="Bookingdetails">
+                        <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                            Thank you message
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6 block-width">
+                                <input type="text" class="validate" asp-for="First_Name" required>
+                                <label asp-for="First_Name">First name</label>
+                            </div>
+                            <div class="input-field col s6 block-width">
+                                <input type="text" class="validate" asp-for="Last_Name" required>
+                                <label asp-for="Last_Name">Last name</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6 block-width">
+                                <input type="number" class="validate" asp-for="PhoneNumber" required>
+                                <label asp-for="PhoneNumber">Phone No.</label>
+                            </div>
+                            <div class="input-field col s6 block-width">
+                                <input type="email" class="validate" asp-for="Email" required>
+                                <label asp-for="Email">E-mail</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s6 block-width">
+                                <select asp-for="Gender">
+                                    <option value="" disabled selected>Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="input-field col s6 block-width">
+                                <select asp-for="Age">
+                                    <option value="" disabled selected>Age class</option>
+                                    <option value="adult">Adult (+12 yrs)</option>
+                                    <option value="child">Child (below 12 yrs)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="input-field col s6 block-width">
+                                <input type="number" id="seat" asp-for="Prefered_Seat">
+                                <label asp-for="Prefered_Seat" for="seat">Seat number</label>
+                            </div>
+
+                        </div> 
+                        
+
+                        <div class="row">
+                            <br/>
+                            <p style="padding: 12px; font-size: 12px;">Ensure you are booking 5+ hours to departure.</p>
+                            <div class="input-field col s6 block-width">
+                                <input type="button" value="Add Passanger" class="waves-effect waves-light tourz-sear-btn v2-ser-btn">
+                            </div>
+                                <div class="input-field col s6 block-width">
+                                    <button type="submit" value="Continue" class="waves-effect waves-light tourz-sear-btn v2-ser-btn" style="width:100%; border: none;">Continue</button>
+                                </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	</section>

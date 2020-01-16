@@ -5,51 +5,336 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - EasyTravel</title>
 
+
+    <!-- FAV ICON -->
+    <link rel="shortcut icon" href="images/fav.ico">
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins%7CQuicksand:400,500,700" rel="stylesheet">
+    <!-- FONT-AWESOME ICON CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!--== ALL CSS FILES ==-->
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/animate.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/mob.css">
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <link rel="stylesheet" href="~/css/materialize.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        @*<link rel="stylesheet" href="~/css/site.css" />*@
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        @*<link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />*@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">EasyTravel</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-                @await Html.PartialAsync("_LoginPartial")
+
+    @using Microsoft.AspNetCore.Identity
+    @using EasyTravel.Models
+
+    @inject SignInManager<ApplicationUser> SignInManager
+    @inject UserManager<ApplicationUser> UserManager
+
+    @* Mobile Menu *@
+    <section>
+        <div class="ed-mob-menu">
+            <div class="ed-mob-menu-con">
+                <div class="ed-mm-left">
+                    <div class="wed-logo">
+                        <a asp-controller="Pages" asp-action="index"><img src="~/images/logo.png" alt="" />
+						</a>
+                    </div>
+                </div>
+                <div class="ed-mm-right">
+                    <div class="ed-mm-menu">
+                        <a href="#!" class="ed-micon"><i style="border:none" class="fa fa-bars"></i></a>
+                        <div class="ed-mm-inn">
+                            <a href="#!" class="ed-mi-close"><i style="border:none" class="fa fa-times"></i></a>
+                            <h4>Home page</h4>
+                            <ul>
+                                <li>
+                                    <a style="text-decoration: none;" asp-controller="Pages" asp-action="index">Home</a>
+                                </li>
+                            </ul>
+                            <h4>Account</h4>
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+                            <ul>
+                                <li><a asp-controller="Manage" asp-action="index">Your Profile</a></li>
+                                <li>
+                                    <a><button type="submit" class="" style="background-color: white; border: unset;">Log out</button></a>
+                                    </li>
+                                </ul>
+                            </form>
+                            }
+                            else
+                            {
+                            <ul>
+                                <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+                                <li><a asp-controller="Account" asp-action="Register">Signup</a></li>
+                            </ul>
+                            }
+
+                            <h4>Support</h4>
+                            <ul>
+                                <li><a asp-controller="Pages" asp-action="Feedback">Feedback</a></li>
+                                <li><a asp-controller="Pages" asp-action="Complaint">Complaint</a></li>
+                            </ul>
+                            <h4>Language</h4>
+                            <ul>
+                                <li><a href="#">English</a></li>
+                                <li><a href="#">Hausa</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2019 - EasyTravel</p>
-        </footer>
-    </div>
+    </section>
+
+    <section>
+        <!-- LOGO AND MENU SECTION -->
+        <div class="top-logo" data-spy="affix" data-offset-top="250">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="wed-logo">
+                            <a asp-controller="Pages" asp-action="index">
+                                <img src="~/images/logo.png" alt="" />
+                            </a>
+                        </div>
+                        <div class="main-menu">
+                            <ul>
+                                <li>
+                                    <a style="text-decoration: none;" asp-controller="Pages" asp-action="index">Home</a>
+                                </li>
+
+                                <li class="cour-menu-a">
+                                    <a style="text-decoration: none;" href="#!" class="mm-arr">Account</a>
+                                    <!-- MEGA MENU 1 -->
+                                    <div class="cour-mm-a m-menu">
+                                        <div class="m-menu-inn">
+                                            <div class="mm1-com mm1-cour-com mm1-s3">
+                                                <h4>Account</h4>
+                                                @if (SignInManager.IsSignedIn(User))
+    {
+                                                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+                                                    <ul>
+                                                        <li><a asp-controller="Manage" asp-action="Index">Your Profile</a></li>
+                                                        <li>
+                                                            <a><button type="submit" class="" style="background-color: white; border: unset;">Log out</button></a>
+                                                        </li>
+                                                    </ul>
+                                                </form>
+                                                }
+                                                else
+                                                {
+                                                    <ul>
+                                                        <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+                                                        <li><a asp-controller="Account" asp-action="Register">Signup</a></li>
+                                                    </ul>
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="mm-pos">
+
+                                    </div> -->
+                                </li>
+                                <li class="cour-menu-b">
+                                    <a style="text-decoration: none;" href="#!" class="mm-arr">Support</a>
+                                    <!-- MEGA MENU 1 -->
+                                    <div class="cour-mm-b m-menu">
+                                        <div class="m-menu-inn">
+                                            <div class="mm1-com mm1-cour-com mm1-s3">
+                                                <h4>Support</h4>
+                                                <ul>
+                                                    <li><a asp-controller="Pages" asp-action="Feedback">Feedback</a></li>
+                                                    <li><a asp-controller="Pages" asp-action="Complaint">Complaint</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="mm-pos">
+
+                                    </div> -->
+                                </li>
+
+                                <li class="cour-menu">
+                                    <a style="text-decoration: none;" href="#!" class="mm-arr">Language</a>
+                                    <!-- MEGA MENU 1 -->
+                                    <div class="cour-mm m-menu">
+                                        <div class="m-menu-inn">
+                                            <div class="mm1-com mm1-cour-com mm1-s3">
+                                                <h4>Language</h4>
+                                                <ul>
+                                                    <li><a href="#">English</a></li>
+                                                    <li><a href="#">Hausa</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="mm-pos">
+
+                                    </div> -->
+                                </li>
+
+                                <!-- <li><a href="#">Contact us</a>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <style>
+    </style>
+    @*@await Html.PartialAsync("_LoginPartial")*@
+
+    @RenderBody()
+    <section>
+        <div class="rows">
+            <div class="footer">
+                <div class="container">
+                    <div class="foot-sec2">
+                        <div style="margin-top: 20px">
+
+                            <div class="row">
+                                <div class="col-sm-2 foot-spec foot-com">
+                                    <a asp-action="About"><h4>About Us</h4></a>
+                                </div>
+                                <div class="col-sm-2 foot-spec foot-com">
+                                    <a asp-action="Terms"><h4>Terms and Conditions</h4></a>
+                                </div>
+                                <div class="col-sm-2 col-md-2 foot-spec foot-com">
+                                    <a asp-action="Faq"><h4>Faq</h4></a>
+                                </div>
+
+                                <div class="col-sm-2 foot-social foot-spec foot-com">
+                                    <a asp-action="Affiliate"><h4>Affiliates</h4></a>
+                                </div>
+                                <div class="col-sm-2 foot-social foot-spec foot-com">
+                                    <a asp-action="Contact"><h4>Contact Us</h4></a>
+                                </div>
+                                <div class="col-sm-2 foot-social foot-spec foot-com">
+                                    <a asp-action="Developer"><h4>Developer</h4></a>
+                                </div>
+                            </div>
+                            <hr style="color:darkgrey; background-color:darkgrey" />
+                            <div class="row" style="padding-left: 15px; padding-right: 15px; margin-bottom: 5px;">
+                                <div class="col-sm-12 foot-social foot-spec foot-com" style="margin-top: 15px; margin-bottom: 15px; margin-left:auto; margin-left:auto;">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
+                                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
+                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+                                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
+                                        <li><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a> </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding-left: 15px; padding-right: 15px; margin-bottom: 20px;"><p>Easy travel is the first online travel agent for motorparks in Nigeria. It serves as a platform where bookings
+                                       and reservation of prefered seats for vehicles in all motor parks in Nigeria (Starting with kano state) can be made at your comfort zone. A tokrn of 50Naira is paid per seat for adults, 30Naira per seat for children an dfree for infants. We have a 24/7 customer care line in English and hausa.
+                                       Please check "Tarms and Conditions" for more clarification and additional information.</p></div>
+
+                            <div class="row">
+                                <div class="col-sm-2 foot-spec foot-com">
+                                    <img style="height: 50px; width: auto;" src="~/images/visa.png" />
+                                </div>
+                                <div class="col-sm-2 foot-spec foot-com">
+                                    <img style="height: 50px; width: auto;" src="~/images/Verve.png" />
+                                </div>
+                                <div class="col-sm-2 col-md-2 foot-spec foot-com">
+                                    <img style="height: 50px; width: auto;" src="~/images/mastercard.webp" />
+                                </div>
+                                <div class="col-sm-2 foot-social foot-spec foot-com">
+                                    <img style="height: 50px; width: auto;" src="~/images/NURTW.jpg" />
+                                </div>
+                                <div class="col-sm-2 foot-social foot-spec foot-com">
+                                    <img style="height: 50px; width: auto;" src="~/images/logo.png" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @*</div>*@
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
+        @*<script src="~/js/site.js"></script>*@
+        <script src="~/js/materialize.min.js"></script>
+        <script src="~/js/jquery-latest.min.js"></script>
+        <script src="~/js/jquery-ui.js"></script>
+        <script src="~/js/wow.min.js"></script>
+        <script src="~/js/custom.js"></script>
+        <script src="~/js/bootstrap.js"></script>
+        <script src="https://js.paystack.co/v1/inline.js"></script>
+        <script>
+            function payWithPaystack() {
+                var handler = PaystackPop.setup({
+                    key: 'pk_test_e68192e0630b4addf10faeff87025a82bf266b57',
+                    email: 'easytravels@gmail.com',
+                    amount: 5000,
+                    currency: "NGN",
+                    ref: '' + Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+                    metadata: {
+                        custom_fields: [
+                            {
+                                display_name: "Mobile Number",
+                                variable_name: "mobile_number",
+                                value: "+2348012345678"
+                            }
+                        ]
+                    },
+                    callback: function (response) {
+                        if (response.status == "success") {
+                            console.log("Status", response);
+                            //window.location.href = '/Pages/Verify/' + response.transaction;
+                            window.location.href = '@Url.Action("Verify", "Pages")?id=' + response.transaction;
+                        }
+
+                    },
+                    onClose: function () {
+                        alert('window closed');
+                    }
+                });
+                handler.openIframe();
+            }
+        </script>
+        <script>
+            if ($("form input:text").length > 0) {
+                console.log("here", $("form input:text").next());
+                $("form input:text").next().addClass("active");
+            }
+            if ($("form input:number").length > 0) {
+                console.log("here1", $("form input:number"));
+                $("form input:number").addClass("active");
+            }
+        </script>
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
@@ -64,7 +349,49 @@
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
+        @*<script src="~/js/site.min.js" asp-append-version="true"></script>*@
+        <script src="~/js/materialize.min.js"></script>
+        <script src="~/js/jquery-latest.min.js"></script>
+        <script src="~/js/jquery-ui.js"></script>
+        <script src="~/js/wow.min.js"></script>
+        <script src="~/js/custom.js"></script>
+        <script src="~/js/bootstrap.js"></script>
+        <script src="https://js.paystack.co/v1/inline.js"></script>
+        <script>
+            function payWithPaystack() {
+                var handler = PaystackPop.setup({
+                    key: 'pk_test_e68192e0630b4addf10faeff87025a82bf266b57',
+                    email: 'easytravels@gmail.com',
+                    amount: 5000,
+                    currency: "NGN",
+                    ref: '' + Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+                    metadata: {
+                        custom_fields: [
+                            {
+                                display_name: "Mobile Number",
+                                variable_name: "mobile_number",
+                                value: "+2348012345678"
+                            }
+                        ]
+                    },
+                    callback: function (response) {
+                        alert('success. transaction ref is ' + response.reference);
+                    },
+                    onClose: function () {
+                        alert('window closed');
+                    }
+                });
+                handler.openIframe();
+            }
+        </script>
+        <script>
+            console.log("Val", $("form input:text").val);
+
+            if (!$("form input:text").val) {
+                console.log("here");
+
+            }
+        </script>
     </environment>
 
     @RenderSection("Scripts", required: false)

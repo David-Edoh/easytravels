@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using EasyTravel.Models;
 using EasyTravel.Models.ManageViewModels;
 using EasyTravel.Services;
+using EasyTravel.Data;
 
 namespace EasyTravel.Controllers
 {
@@ -25,6 +26,7 @@ namespace EasyTravel.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         private readonly UrlEncoder _urlEncoder;
+        private readonly ApplicationDbContext context;
 
         private const string AuthenticatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
         private const string RecoveryCodesKey = nameof(RecoveryCodesKey);
@@ -34,17 +36,45 @@ namespace EasyTravel.Controllers
           SignInManager<ApplicationUser> signInManager,
           IEmailSender emailSender,
           ILogger<ManageController> logger,
-          UrlEncoder urlEncoder)
+          UrlEncoder urlEncoder, ApplicationDbContext applicationDbContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
             _urlEncoder = urlEncoder;
+            context = applicationDbContext;
         }
 
         [TempData]
         public string StatusMessage { get; set; }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Edit()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+
+            var model = new IndexViewModel
+            {
+                Username = user.UserName,
+                FirstName = user.Firstname,
+                LastName = user.LastName,
+                Address = user.Address,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                IsEmailConfirmed = user.EmailConfirmed,
+                StatusMessage = StatusMessage
+            };
+
+            return View(model);
+        }
+
+
 
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -58,6 +88,9 @@ namespace EasyTravel.Controllers
             var model = new IndexViewModel
             {
                 Username = user.UserName,
+                FirstName = user.Firstname,
+                LastName = user.LastName,
+                Address = user.Address,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 IsEmailConfirmed = user.EmailConfirmed,
@@ -69,13 +102,13 @@ namespace EasyTravel.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(IndexViewModel model)
+        public async Task<IActionResult> Edit(IndexViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-
+            Console.WriteLine(model);
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -101,6 +134,39 @@ namespace EasyTravel.Controllers
                     throw new ApplicationException($"Unexpected error occurred setting phone number for user with ID '{user.Id}'.");
                 }
             }
+
+            var FirstName = user.Firstname;
+            if(model.FirstName != FirstName)
+            {
+                ApplicationUser _user = context.Users.Find(user.Id);
+                _user.Firstname = model.FirstName;
+                context.SaveChanges();
+            }
+
+            var LastName = user.LastName;
+            if(model.LastName != user.LastName)
+            {
+                ApplicationUser _user = context.Users.Find(user.Id);
+                _user.LastName = model.LastName;
+                context.SaveChanges();
+            }
+
+            var address = user.Address;
+            if(address != model.Address)
+            {
+                ApplicationUser _user = context.Users.Find(user.Id);
+                _user.Address = model.Address;
+                context.SaveChanges();
+            }
+
+            if(user.PhoneNumber != model.PhoneNumber)
+            {
+                ApplicationUser _user = context.Users.Find(user.Id);
+                _user.PhoneNumber = model.PhoneNumber;
+                context.SaveChanges();
+            }
+
+
 
             StatusMessage = "Your profile has been updated";
             return RedirectToAction(nameof(Index));

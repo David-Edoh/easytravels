@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "Complaint";
+}
+
+<section>
+    <div class="db">
+        <div class="db-l" style="opacity:0;">
+            <div class="db-l-1">
+
+            </div>
+        </div>
+        <div class="db-2">
+            <div class="db-2-com db-2-main">
+                <h4>Complaint</h4>
+                <div class="db-2-main-com db-2-main-com-table db-com-p" style="padding: unset !important;">
+                    <form class="contact__form v2-search-form">
+                        <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                            Thank you message
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6 block-width">
+                                <input type="text" class="validate" name="firstName" required>
+                                <label>First name</label>
+                            </div>
+                            <div class="input-field col s6 block-width">
+                                <input type="text" class="validate" name="lastName" required>
+                                <label>Last name</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6 block-width">
+                                <input type="number" class="validate" name="phone" required>
+                                <label>Enter your phone</label>
+                            </div>
+                            <div class="input-field col s6 block-width">
+                                <input type="email" class="validate" name="email" required>
+                                <label>Enter your email</label>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="input-field col s12">
+                                <textarea style="height: unset !important" rows="6" name="complaint" id="complaint" placeholder="complaint"></textarea>
+                                <label for="seat">prefered seat number</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <a asp-action="#">
+                                <div class="input-field col s6">
+                                    <input type="submit" value="Submit" class="waves-effect waves-light tourz-sear-btn v2-ser-btn">
+                                </div>
+                            </a>
+                        </div>
+                        <br/>
+                        <p>We promise to look into your compliants, Thanks.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="db-l" style="opacity:0;">
+            <div class="db-l-1">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@* ---------------- *@

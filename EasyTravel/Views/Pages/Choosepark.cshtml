@@ -1,0 +1,114 @@
+﻿@model ChooseParkViewModel
+@{
+    ViewData["Title"] = "Choosepark";
+}
+
+
+
+<section>
+<div class="v2-hom-search">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="">
+                    <form class="contact__form v2-search-form form-padding" asp-controller="Pages" asp-action="Choosepark" method="post">
+                        <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                            Thank you message
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <select asp-for="Motor_park">
+                                    <option value="" disabled selected>Name of Motorpark</option>
+                                    <option value="Land Star Express">Landstar Express</option>
+                                    <option value="Benue Links">Benue Links</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input asp-for="Address" type="text" class="validate" name="address" required>
+                                <label asp-for="Address">Your Address</label>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="input-field col s6 block-width">
+                                <input type="number" class="validate" asp-for="Fare" required>
+                                <label asp-for="Fare">Fare</label>
+                            </div>
+
+                            <div class="input-field col s6 block-width">
+                                <select asp-for="Vehicle">
+                                    <option value="" disabled selected>Vehicle</option>
+                                    <option value="1st Bus">1st Bus</option>
+                                    <option value="Micro">Micro</option>
+                                    <option value="Mini">Mini</option>
+                                    <option value="Prime">Prime</option>
+                                    <option value="Prime SUV">Prime SUV</option>
+                                    <option value="Luxury Cars">Luxury Cars</option>
+                                    <option value="Mini Van">Mini Van</option>
+                                    <option value="Small Bus">Small Bus</option>
+                                    <option value="Luxury Bus">Luxury Bus</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        
+                        <div class="row">
+                            <div class="input-field col s6 block-width">
+                                <select asp-for="Depature_Time">
+                                    <option value="" disabled selected>Time</option>
+                                    <option value="24:00 midnight">24:00 AM</option>
+                                    <option value="01:00 AM">01:00 AM</option>
+                                    <option value="02:00 AM">02:00 AM</option>
+                                    <option value="03:00 AM">03:00 AM</option>
+                                    <option value="04:00 AM">04:00 AM</option>
+                                    <option value="05:00 AM">05:00 AM</option>
+                                    <option value="06:00 AM">06:00 AM</option>
+                                    <option value="07:00 AM">07:00 AM</option>
+                                    <option value="08:00 AM">08:00 AM</option>
+                                    <option value="09:00 AM">09:00 AM</option>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="11:00 AM">11:00 AM</option>
+                                    <option value="12:00 noon">12:00 PM</option>
+                                    <option value="13:00 PM">13:00 PM</option>
+                                    <option value="14:00 PM">14:00 PM</option>
+                                    <option value="15:00 PM">15:00 PM</option>
+                                    <option value="16:00 PM">16:00 PM</option>
+                                    <option value="17:00 PM">17:00 PM</option>
+                                    <option value="18:00 PM">18:00 PM</option>
+                                    <option value="19:00 PM">19:00 PM</option>
+                                    <option value="20:00 PM">20:00 PM</option>
+                                    <option value="21:00 PM">21:00 PM</option>
+                                    <option value="22:00 PM">22:00 PM</option>
+                                    <option value="23:00 PM">23:00 PM</option>
+                                    <option value="24:00 midnight">06:00 AM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                @*<a asp-action="Bookingdetails">*@
+                                    <button type="submit" value="Continue" class="waves-effect waves-light tourz-sear-btn v2-ser-btn" style="width:100%; border: none;">Continue</button>
+                                @*</a>*@
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="v2-ho-se-ri">
+                    @*<h5>World's leading tour and travels template</h5>*@
+                    <h2 style="color: white;">Don't you know your way around? or want a ride to the park from your home?</h2>
+                    <p><a class="btn btn-success" target="_blank" href="http://www.operapay.com">Click Here</a></p>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+	</section>

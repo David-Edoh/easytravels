@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewData["Title"] = "Feedback";
+}
+
+<section>
+    <div class="db">
+        <div class="db-l" style="opacity:0;">
+            <div class="db-l-1">
+
+            </div>
+        </div>
+        <div class="db-2">
+            <div class="db-2-com db-2-main">
+                <h4>Feedback</h4>
+                <div class="db-2-main-com db-2-main-com-table db-com-p" style="padding: unset !important;">
+                    <form class="contact__form v2-search-form">
+                        <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                            Thank you message
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6 block-width">
+                                <label class="fix-pos">Ease of Use:</label>
+                            </div>
+                            <div class="input-field col s6 block-width fix-margin-buttom">
+                                <select name="easerating">
+                                    <option value="1" selected disabled>Unrated</option>
+                                    <option value="1">1 star</option>
+                                    <option value="2">2 star</option>
+                                    <option value="3">3 star</option>
+                                    <option value="4">4 star</option>
+                                    <option value="5">5 star</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6 block-width">
+                                <label class="fix-pos">Customer care serveice:</label>
+                            </div>
+                            <div class="input-field col s6 block-width fix-margin-buttom">
+                                <select name="customercare">
+                                    <option value="1" selected disabled>Unrated</option>
+                                    <option value="1">1 star</option>
+                                    <option value="2">2 star</option>
+                                    <option value="3">3 star</option>
+                                    <option value="4">4 star</option>
+                                    <option value="5">5 star</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6 block-width">
+                                <label class="fix-pos">Website Layout:</label>
+                            </div>
+                            <div class="input-field col s6 block-width fix-margin-buttom">
+                                <select name="sitelayout">
+                                    <option value="1" selected disabled>Unrated</option>
+                                    <option value="1">1 star</option>
+                                    <option value="2">2 star</option>
+                                    <option value="3">3 star</option>
+                                    <option value="4">4 star</option>
+                                    <option value="5">5 star</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6 block-width">
+                                <label class="fix-pos">Website content</label>
+                            </div>
+                            <div class="input-field col s6 block-width  fix-margin-buttom">
+                                <select name="contentrating">
+                                    <option value="1" selected disabled>Unrated</option>
+                                    <option value="1">1 star</option>
+                                    <option value="2">2 star</option>
+                                    <option value="3">3 star</option>
+                                    <option value="4">4 star</option>
+                                    <option value="5">5 star</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6 block-width">
+                                <label class="fix-pos">Enter your Email</label>
+                            </div>
+                            <div class="input-field col s6 block-width fix-margin-buttom">
+                                <input type="email" class="validate" name="email" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6 block-width">
+                                <label class="fix-pos">Enter your phone</label>
+                            </div>
+                            <div class="input-field col s6 block-width fix-margin-buttom">
+                                <input type="number" class="validate" name="phone" required>
+                            </div>
+                        </div>
+
+                        @*<div class="row">
+            <div class="input-field col s6">
+                <select name="gender">
+                    <option value="" disabled selected>Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="input-field col s6">
+                <select name="class">
+                    <option value="" disabled selected>Age class</option>
+                    <option value="adult">Adult (+12 yrs)</option>
+                    <option value="child">Child (below 12 yrs)</option>
+                </select>
+            </div>
+        </div>*@
+
+                        <div class="row">
+                            <a asp-action="#">
+                                <div class="input-field col s6">
+                                    <input type="submit" value="Submit" class="waves-effect waves-light tourz-sear-btn v2-ser-btn">
+                                </div>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="db-l" style="opacity:0;">
+            <div class="db-l-1">
+
+            </div>
+        </div>
+    </div>
+</section>

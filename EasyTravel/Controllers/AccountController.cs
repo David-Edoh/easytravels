@@ -51,6 +51,17 @@ namespace EasyTravel.Controllers
             return View();
         }
 
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public IActionResult Editprofile()
+        {
+            return View();
+        }
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -220,7 +231,7 @@ namespace EasyTravel.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, LastName = model.LastName, Firstname = model.FirstName, Address = model.Address, PhoneNumber = model.PhoneNumber};
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -247,7 +258,7 @@ namespace EasyTravel.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction(nameof(PagesController.Index), "Pages");
         }
 
         [HttpPost]
@@ -335,7 +346,7 @@ namespace EasyTravel.Controllers
         {
             if (userId == null || code == null)
             {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+                return RedirectToAction(nameof(PagesController.Index), "Pages");
             }
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
@@ -451,11 +462,11 @@ namespace EasyTravel.Controllers
         {
             if (Url.IsLocalUrl(returnUrl))
             {
-                return Redirect(returnUrl);
+                return RedirectToAction(nameof(PagesController.Index), "Pages");
             }
             else
             {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+                return RedirectToAction(nameof(PagesController.Index), "Pages");
             }
         }
 

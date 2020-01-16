@@ -10,6 +10,18 @@ namespace EasyTravel.Models.ManageViewModels
     {
         public string Username { get; set; }
 
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
         public bool IsEmailConfirmed { get; set; }
 
         [Required]

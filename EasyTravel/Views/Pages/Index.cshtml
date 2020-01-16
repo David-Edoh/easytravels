@@ -1,0 +1,63 @@
+﻿@model b_IndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section>
+    <div class="tourz-search">
+        <div class="container">
+            <div class="row">
+                <div class="tourz-search-1">
+                    <h1 style="font-family: 'Quicksand', sans-serif !important; font-size:50px !important; font-weight: 700 !important; margin-bottom: 40px;">Plan Your Travel Now!</h1>
+                    <!-- <p>BOOKINGS</p> -->
+                    <!-- <p>Experience the various exciting tour and travel packages and Make hotel reservations, find vacation packages, search cheap hotels and events</p> -->
+
+                    <form class="v2-search-form form-padding" asp-controller="Pages" asp-action="Index" method="post">
+                        <!-- <div class=""> -->
+               
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label asp-for="From">Travel From</label>
+                                <select asp-for="From" id="inputState" class="form-control">
+                                    <option selected>Kanu</option>
+                                    <option>Abia</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label asp-for="To">Travel To</label>
+                                <select asp-for="To" id="inputState" class="form-control">
+                                    <option selected>Abia</option>
+                                    <option>Kanu</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label asp-for="Travel_Date">Select date</label>
+                                <input asp-for="Travel_Date" type="text" id="from">
+                            </div>
+                        </div>
+
+                        <div class="input-field">
+                            <br>
+                        </div>
+                      
+                        <div class="input-field">
+                            @*<a asp-action="Choosepark">*@
+                                <button type="submit" value="Check Available Vehicles" class="waves-effect waves-light tourz-sear-btn" style="width:100%; border: none;">
+                                    Check Available Vehicles
+                                </button>
+                            @*</a>*@
+                        </div>
+                    </form>
+                    <div class="tourz-hom-ser">
+                        <ul>
+                            <li>
+                                <a asp-action="Status" class="waves-effect waves-light btn-large tourz-pop-ser-btn wow fadeInUp" data-wow-duration="1.5s"><img src="images/icon/30.png" alt="">Status</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

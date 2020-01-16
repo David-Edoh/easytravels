@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewData["Title"] = "ConfirmBooking";
+}
+
+<section>
+    <div class="v2-hom-search">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="">
+                        <form class="contact__form v2-search-form">
+                            <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                                Thank you message
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <label>Confirmation Code:</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input type="text" class="validate" name="confirmcode" required>
+                                    <label>Enter Confirmation Code</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <label>Full Name:</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input type="text" class="validate" name="name" required>
+                                    <label>Enter Full Name</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <a asp-action="summary">
+                                    <div class="input-field col s6">
+                                        <input type="submit" value="Check ticket status" class="waves-effect waves-light tourz-sear-btn v2-ser-btn">
+                                    </div>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="v2-ho-se-ri">
+                        <h5>Check your ticket status.</h5>
+
+                        <img src="" alt="seat map" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
